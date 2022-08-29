@@ -9,9 +9,9 @@ export const handler: Handlers = {
   //   resp.headers.set("X-Custom-Header", "Hello");
   //   return resp;
   // },
-  GET(req) {
+  GET(req, ctx) {
     const uuid = crypto.randomUUID();
-    return new Response(JSON.stringify(uuid), {
+    return new Response(`${JSON.stringify(uuid)} ${ctx.state.data}`, {
       headers: { "Content-Type": "application/json" },
     });
   },
